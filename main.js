@@ -109,7 +109,7 @@ app.use(function*routeAsync(next){
 		}
 
 		if(ret instanceof this.U.TmplResult) {
-			let fn = './templates/result.ejs';
+			let fn = './templates/index.ejs';
 			fn = fn.toLocaleLowerCase();
 			if(!fs.existsSync(fn)){
 				this.throw(404);
