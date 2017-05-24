@@ -1,11 +1,25 @@
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'source-map',
-  entry: './main.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
+    devtool: 'cheap-module-source-map',
+    entry: './src/index.js',
+    output: {
+        filename: './dist/bundle.js'
+    },
+    module: {
+        loaders: [{
+            test: /\.coffee$/,
+            loader: 'coffee-loader'
+        }, {
+            test: /\.css$/,
+            loader: "css-loader"
+        }, {
+            test: /\.js?$/,
+            exclude: /node_modules|dist/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015','react']
+            }
+        }]
+    }
 };
