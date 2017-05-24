@@ -14,7 +14,7 @@ export function myApp(state = initialState, action) {
             }
         default:
           return {
-            text:'Hello'
+            text:'Hello world'
         };
     }
 }

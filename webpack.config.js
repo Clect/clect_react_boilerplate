@@ -8,18 +8,12 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.coffee$/,
-            loader: 'coffee-loader'
-        }, {
             test: /\.css$/,
             loader: "css-loader"
         }, {
             test: /\.js?$/,
             exclude: /node_modules|dist/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015','react']
-            }
+            loader: 'babel-loader?presets[]=es2015&presets[]=react',
         }]
     }
 };
