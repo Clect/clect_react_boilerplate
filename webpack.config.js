@@ -15,5 +15,10 @@ module.exports = {
             exclude: /node_modules|dist/,
             loader: 'babel-loader?presets[]=es2015&presets[]=react',
         }]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 9000
     }
 };
