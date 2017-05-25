@@ -5,7 +5,7 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: [
         'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://localhost:9000',
         'webpack/hot/only-dev-server',
         './src/index.js'],
     output: {
@@ -27,7 +27,8 @@ module.exports = {
         contentBase: resolve(__dirname, 'dist'),
         publicPath: '/',
         compress: true,
-        hot: true
+        hot: true,
+        port:9000
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),// 开启全局的模块热替换（HMR）

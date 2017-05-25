@@ -4,7 +4,7 @@
   "description": "",
   "main": "bundle.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack && webpack-dev-server"
   },
   "dependencies": {
     "babel-core": "^6.4.5",
