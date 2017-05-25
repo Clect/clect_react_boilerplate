@@ -5,13 +5,13 @@ import { changeText, buttonClick, buttonIncrease } from '../action';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-class App extends React.Component{
+class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.ins = this.ins.bind(this);
     }
-    ins(){
+    ins() {
         this.props.actions.buttonIncrease();
     }
 
@@ -30,20 +30,20 @@ class App extends React.Component{
 }
 
 function mapStateToProps(state) {
-  return {
-      text: state.text,
-      counter: state.counter
-   }
+    return {
+        text: state.text,
+        counter: state.counter
+    };
 }
 
 function mapDispatchToProps(dispatch){
     return{
-        actions : bindActionCreators({
+        actions: bindActionCreators({
             changeText: changeText,
             buttonClick: buttonClick,
             buttonIncrease: buttonIncrease
         }, dispatch)
-    }
+    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

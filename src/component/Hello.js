@@ -1,12 +1,12 @@
 import React from 'react';
 
-class Hello extends React.Component{
+class Hello extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick() {
         this.props.actions.changeText();
     }
 
