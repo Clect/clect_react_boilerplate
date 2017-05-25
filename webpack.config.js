@@ -1,10 +1,17 @@
-var path = require('path');
+const { resolve } = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    devtool: 'cheap-module-source-map',
-    entry: './src/index.js',
+    devtool: 'inline-source-map',
+    entry: [
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './src/index.js'],
     output: {
-        filename: './dist/bundle.js'
+        filename: 'bundle.js',
+        path: resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     module: {
         loaders: [{
@@ -17,8 +24,13 @@ module.exports = {
         }]
     },
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: resolve(__dirname, 'dist'),
+        publicPath: '/',
         compress: true,
-        port: 9000
-    }
+        hot: true
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),// 开启全局的模块热替换（HMR）
+        new webpack.NamedModulesPlugin()// 当模块热替换（HMR）时在浏览器控制台输出对用户更友好的模块名字信息
+    ]
 };

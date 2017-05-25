@@ -1,1 +1,4 @@
-{ "presets": ["es2015"] }
+{
+    "presets": ["es2015"],
+    "plugins": ["react-hot-loader/babel"]// 开启react代码的模块热替换（HMR）    
+}

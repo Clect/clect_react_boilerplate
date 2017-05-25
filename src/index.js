@@ -1,124 +1,25 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { Provider, connect} from 'react-redux';
-import { changeText, buttonClick } from './action';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { store } from './store';
+import App from './component/App'
+import { AppContainer } from 'react-hot-loader';
 
-// action
-/*
-function changeText(){
-    return {
-        type:'CHANGE_TEXT'
-    }
+const render = (Component) => {
+    ReactDOM.render(
+        <AppContainer>
+            <Provider store={store}>
+                <Component />
+            </Provider>
+        </AppContainer>,
+        document.getElementById('root')
+    )
 }
-
-function buttonClick(){
-    return {
-        type:'BUTTON_CLICK'
-    }
+render(App);
+// 模块热替换的 API
+console.log(module.hot);
+if (module.hot) {
+    module.hot.accept('./component/App', () => {
+        render(App);
+    });
 }
-*/
-
-// reducer
-/*
-const initialState = {
-    text: 'Hello'
-}
-
-function myApp(state = initialState, action) {
-    switch (action.type) {
-        case 'CHANGE_TEXT':
-            return {
-                text:state.text=='Hello'?'Stark':'Hello'
-            }
-        case 'BUTTON_CLICK':
-            return {
-                text: 'You just click button'
-            }
-        default:
-          return {
-            text:'Hello'
-        };
-    }
-}
-*/
-/*
-// store
-let store = createStore(myApp);
-
-*/
-
-class Hello extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        this.props.actions.changeText();
-    }
-
-    render() {
-        return (
-            <h1 onClick={this.handleClick}> {this.props.text} </h1>
-        );
-    }
-}
-
-class Change extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        this.props.actions.buttonClick();
-    }
-
-    render() {
-        return (
-            <button onClick={this.handleClick} >change</button>
-        );
-    }
-}
-
-class App extends React.Component{
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const { actions, text} = this.props;
-        return (
-            <div>
-                <Hello actions={actions} text={text}/>
-                <Change actions={actions}/>
-            </div>
-        );
-    }
-}
-
-function mapStateToProps(state) {
-  return { text: state.text }
-}
-
-function mapDispatchToProps(dispatch){
-    return{
-        actions : bindActionCreators({
-            changeText: changeText,
-            buttonClick: buttonClick
-        }, dispatch)
-    }
-}
-
-App = connect(mapStateToProps,mapDispatchToProps)(App)
-
-render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
-)
-
