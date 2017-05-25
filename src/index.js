@@ -17,7 +17,7 @@ const render = (Component) => {
 }
 render(App);
 // 模块热替换的 API
-console.log(module.hot);
+
 if (module.hot) {
     module.hot.accept('./component/App', () => {
         render(App);

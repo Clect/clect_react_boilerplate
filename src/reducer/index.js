@@ -1,5 +1,6 @@
 const initialState = {
-    text: 'Hello'
+    text: 'Hello',
+    counter:0
 };
 
 export function myApp(state = initialState, action) {
@@ -12,6 +13,10 @@ export function myApp(state = initialState, action) {
             return {
                 text: 'You just click button'
             }
+        case 'BUTTON_INCRESASE':
+        return {
+            counter: state.counter++
+        }
         default:
           return {
             text:'Hello world'
