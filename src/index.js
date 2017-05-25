@@ -5,7 +5,7 @@ import { Provider, connect} from 'react-redux';
 import { changeText, buttonClick } from './action';
 import { store } from './store';
 
-//action
+// action
 /*
 function changeText(){
     return {
@@ -20,7 +20,7 @@ function buttonClick(){
 }
 */
 
-//reducer
+// reducer
 /*
 const initialState = {
     text: 'Hello'
@@ -44,7 +44,7 @@ function myApp(state = initialState, action) {
 }
 */
 /*
-//store
+// store
 let store = createStore(myApp);
 
 */
