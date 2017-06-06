@@ -11,7 +11,8 @@ export function myApp(state = initialState, action) {
             };
         case 'BUTTON_CLICK':
             return {
-                text: 'You just click button'
+                text: 'You just click button',
+                counter: state.counter
             };
         case 'BUTTON_INCRESASE':
             return {
